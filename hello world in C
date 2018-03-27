@@ -1,0 +1,7 @@
+#include<stdio.h>
+
+void main(void){
+  printf("\n");
+  printf("Hello World");
+  printf("\n");
+}
