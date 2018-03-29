@@ -1,0 +1,93 @@
+//PROGRAM GAME THE TIC-TOE
+/*-MATRIKS 3X3 -> TAMPILKAN DATA,VALIDASI KOORDINAT
+CEK MENANG (WIN/DRAW) HORISZONTAL,VERTICAL,DIAGONAL*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+
+int main()
+{
+    char board[3][3]={'_','_','_','_','_','_','_','_','_'};
+    char repeat;
+    int row,column,line,i,j,cek=0;
+    int winner = 0,choice1,choice2,player;
+    do{
+
+    char board[3][3]={'_','_','_','_','_','_','_','_','_'};
+    for(i=0;i<9&&winner==0;i++)
+    {
+        system("cls");
+
+        printf("XO TABLE\n");
+        printf("=-=-=-=-=-=-=\n\n");
+        printf("   1 2 3\n");
+        printf(" 1 %c %c %c\n",board[0][0],board[0][1],board[0][2]);
+        printf(" 2 %c %c %c\n",board[1][0],board[1][1],board[1][2]);
+        printf(" 3 %c %c %c\n",board[2][0],board[2][1],board[2][2]);
+        player = i%2 +1;
+        do {
+            cek = 0;
+            printf("\nPlayer %d\n""where you want to place your %c: ",player,(player==1)?'X':'O');
+            printf("\n Input coordinate x = ");scanf("%d",&choice1);
+            printf("\n Input coordinate y = ");scanf("%d",&choice2);
+            row = choice1-1; column = choice2-1;
+                if(choice1<=0 || choice1>=4 || choice2<=0 || choice2>=4)
+                    {cek=1; printf("\nError !\n");}
+                if(board[row][column]=='X' || board[row][column]=='O')
+                    {cek=1; printf("\nAlready Value\n");}
+            } while(cek==1);
+
+        board[row][column] = (player==1)?'X':'O';
+
+        //diagonal
+        if(board[0][0]!='_'&& board[1][1] !='_' && board[2][2] !='_')
+            {if(board[0][0]==board[1][1] && board[0][0]==board[2][2])
+               winner = player;}
+        if(board[0][2]!='_'&& board[1][1] !='_' && board[2][0] !='_')
+              if(board[0][2]==board[1][1] && board[0][2]==board[2][0])
+                winner = player;
+        //vertical
+        if(board[0][0]!='_'&& board[0][1] !='_' && board[0][2] !='_')
+            {if(board[0][0]==board[0][1] && board[0][0]==board[0][2])
+               winner = player;}
+        if(board[1][0]!='_'&& board[1][1] !='_' && board[1][2] !='_')
+              {if(board[1][0]==board[1][1] && board[1][0]==board[1][2])
+                winner = player;}
+        if(board[2][0]!='_'&& board[2][1] !='_' && board[2][2] !='_')
+              {if(board[2][0]==board[2][1] && board[2][0]==board[2][2])
+                winner = player;}
+        //horizontal
+        if(board[0][0]!='_'&& board[1][0] !='_' && board[2][0] !='_')
+            {if(board[0][0]==board[1][0] && board[0][0]==board[2][0])
+               winner = player;}
+        if(board[0][1]!='_'&& board[1][1] !='_' && board[2][1] !='_')
+              {if(board[0][1]==board[1][1] && board[0][1]==board[2][1])
+                winner = player;}
+        if(board[0][2]!='_'&& board[1][2] !='_' && board[2][2] !='_')
+              {if(board[0][2]==board[1][2] && board[0][2]==board[2][2])
+                winner = player;}
+    }
+        system("cls");
+        printf("XO TABLE\n");
+        printf("=-=-=-=-=-=-=\n\n");
+        printf("   1 2 3\n");
+        printf(" 1 %c %c %c\n",board[0][0],board[0][1],board[0][2]);
+        printf(" 2 %c %c %c\n",board[1][0],board[1][1],board[1][2]);
+        printf(" 3 %c %c %c\n",board[2][0],board[2][1],board[2][2]);
+
+        if(i==9){
+            fflush(stdin);
+            printf("\nDRAW\n");
+            printf("Continue ? (Y/N) :");scanf("%c",&repeat);
+            winner = 0;
+        }else{
+            fflush(stdin);
+            printf("\nPlayer %d has won\n\n", winner);
+            printf("Continue ? (Y/N) :");scanf("%c",&repeat);
+            winner = 0;
+            }
+    }while((toupper(repeat))=='Y');
+    return 0;
+}
