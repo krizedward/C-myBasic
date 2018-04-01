@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	//Deklarasi
+	char usr[] ="bluejack", pas[] ="bluejack";
+	char from[10], to[10], mail[]="hi bluejack, bla bla bla";
+	int nomen;
+	//Algoritmik
+	do{
+    system("cls");
+    printf("Login First...\n");
+	printf("Username :");scanf("%s",&usr);
+	printf("Password :");scanf("%s",&pas);
+	}while(strstr(usr, "bluekjack")==0 && strstr(pas, "bluejack")==0);
+	LOOP:system("cls");
+	printf("1. New Message\n");
+	printf("2. Inbox\n");
+	printf("3. Outbox\n");
+	printf("4. Exit\n");
+	printf("%s",&from);
+	printf("Enter your choice :");scanf("%d",&nomen);
+	switch(nomen)
+	{
+    case 1 :
+        {
+          system("cls");
+          printf("\tCompose\n**********************\n\n");
+          printf("From \t\t:");scanf("%s",&from);
+          printf("To [1...20]\t:");scanf("%s",&to);
+          printf("Message [1...50]: %s\n\n",&mail);
+          printf("Message sent successfully........\n\n");
+          system("pause");
+          goto LOOP;
+        }
+    case 2 :
+        {
+          system("cls");
+          printf("\tInbox\n**********************\n\n");
+          printf("From \t\t: %s\n",&from);
+          printf("To [1...20]\t: %s\n",&to);
+          printf("Message [1...50]: %s\n\n",&mail);
+          system("pause");
+          goto LOOP;
+        }
+    case 3 :
+        {
+          system("cls");
+          printf("\tOutbox\n**********************\n\n");
+          printf("To [1...20]\t: %s\n",&to);
+          printf("From \t\t: %s\n",&from);
+          printf("Message [1...50]: %s\n\n",&mail);
+          system("pause");
+          goto LOOP;
+        }
+    case 4 :
+        {
+          printf("\n*** Thanks for using the program! Goodbye. ***\n");
+          exit(0);
+          break;
+        }
+    default:
+        printf("\nError! Wrong Number is Entered\nPlease Try Again\n");
+        break;
+	}
+	return 0;
+}
