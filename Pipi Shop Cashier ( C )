@@ -1,0 +1,66 @@
+//  PROGRAM PURCHASE ORDER PIPI SHOP
+/* check -> number, street, product
+check enter , perulangan.*/
+
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    //deklarasi
+    char nma[20], alt[50], nmp[20], jum[2], cdt[14],repeat,key[]= "street";
+    char *nmp1,*nmp2,*nmp3,*nmp4,*nmp5;
+    int len,len1,len2,len3;
+    //Algortima
+    do{
+    system("cls");
+    printf("\t\t\tPurchase Order Pipi Shop\n");
+    printf("\t\t\t************************\n");
+    do{
+    printf("\nInput your name [1...20] : "); scanf("%[^\n]s",nma);
+    len = strlen(nma); fflush(stdin);fflush (stdout);
+    }while ((len <= 0 )|| (len >=20));
+    //alamat
+    do{
+    printf("Input your address [1...50 :: must contain street ] : "); scanf("%[^\n]s",alt);
+    fflush(stdin);
+    }while (strstr(alt,key) == 0);
+    //produk
+    printf("\nProduct list        :\n");
+    printf("1. Powder\n");
+    printf("2. Eyeshadow\n");
+    printf("3. Lip Gloss\n");
+    printf("4. Mascara\n");
+    do{
+    printf("\nInput the product name :"); scanf("%[^\n]s",nmp);
+    fflush(stdin); fflush(stdout);
+    nmp1 = strstr(nmp,"Powder");
+    nmp2 = strstr(nmp,"Eyeshadow");
+    nmp3 = strstr(nmp,"Lip Gloss");
+    nmp4 = strstr(nmp,"Mascara");
+    nmp5 = strstr(nmp,"Eye Liner");
+    }while (nmp1==0&&nmp2==0&&nmp3==0&&nmp4==0&&nmp5==0);
+    //jumlah produk
+    do{
+    printf("Input the quantity [1..100] : "); scanf("%s",jum);
+    len2 = strlen(jum); fflush(stdin);
+    } while ((len2 <= 0 )|| (len2 >=3));
+    //credit
+    do{
+    printf("Input your credit card number[14 digit] : "); scanf("%s",cdt);
+    len3 = strlen(jum); fflush(stdin);
+    } while ((len3 <= 0 )|| (len3 >=14));
+    printf("\n\n\nPress enter continue......");
+    system("cls");
+    printf("\t\t\tPurchase Order Pipi Shop\n");
+    printf("\t\t\t************************\n");
+    printf("Name : %s\n",nma);
+    printf("Address : %s\n",alt);
+    printf("Product name : %s quantity %s peices\n",nmp,jum);
+    printf("Cerdit card : %s\n\n",cdt);
+    printf("Continue ? (Y/N) :");scanf("%c",&repeat);
+    nma[20]= " ";
+    getchar();
+    }while((toupper(repeat)) == 'Y');
+    return 0;
+}
